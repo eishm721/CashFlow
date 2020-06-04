@@ -27,6 +27,8 @@ Tools Used:
 - REST - design and implement an API
 
 Set-Up:
-- Run npm install inside project folder in command line to initialize node modules
+- Download latest versions of Node.js, NPM, MongoDB (recommended to use Homebrew)
+- Run `npm install` inside project folder in command line to initialize node modules
+- Create a directory for your MongoDB database and run `mongod --dbpath=PATH_TO_YOUR_DB_DIRECTORY` in command line 
 - Access page through localhost:1930
 
