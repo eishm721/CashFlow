@@ -64,12 +64,17 @@ button {
   color: white;
 }
 
-#header a:visited, a:link {
+#header a:visited, a:hover, a:link {
+  color: white;
+  text-decoration: none;
+}
+
+#navigation a:visited, a:link {
   color: #bbbbbb;
   text-decoration:none
 }
 
-#header a:hover {
+#navigation a:hover {
   color: white;
   text-decoration: none;
 }
