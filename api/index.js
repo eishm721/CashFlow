@@ -15,6 +15,7 @@ const express = require("express");
 const { MongoClient } = require("mongodb");
 
 const MAX_ALERTS = 5;
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb://localhost";
 
 let DATABASE_NAME = "cashflow";
 let api = express.Router();
@@ -29,7 +30,7 @@ module.exports = async (app) => {
   app.use("/api", api);
 
   /* Connect to MongoDB */
-  conn = await MongoClient.connect("mongodb://localhost", {useUnifiedTopology: true});
+  conn = await MongoClient.connect(MONGODB_URL, { useUnifiedTopology: true });
   db = conn.db(DATABASE_NAME);
   Account = db.collection("account");
   Alerts = db.collection("alerts");
