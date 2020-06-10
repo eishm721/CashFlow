@@ -6,11 +6,6 @@
 
 import Account from "./Account.js";
 
-// clean up a lot of code
-// update comments
-// define constants instead of magic numbers
-// google auth + homepage for that?
-
 /* Define time constants */
 const MS_IN_SEC = 1000;
 const SEC_IN_MIN = 60;
