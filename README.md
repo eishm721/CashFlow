@@ -1,6 +1,6 @@
 # CashFlow
 
-This is an ATM web app for budgeting finances w/ a customizable transaction history data visualization tool
+This is an ATM web app for budgeting finances w/ a customizable transaction history data visualization tool.
 Website Link: https://cashflow-atm.herokuapp.com
 
 The application has two pages, one to manage an account and one to view an account's history. The manage account page allows a user to log their transactions, see quick facts about their account's statisics, as well as customizable alerts showing the 5 most recent actions (including low-balance warnings. The view page allows a user to see a visualization of their transaction history and other statistics on their spending/earnings using Chart.js. They have 9 different customizations options for the time scale and type of transaction to view. All data is managed through a database for long-term storage of one's banking profile. Website is hosted using AWS, Heroku, Git.
