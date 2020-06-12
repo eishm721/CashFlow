@@ -8,14 +8,15 @@ The application has two pages, one to manage an account and one to view an accou
 
 Pages were built using HTML5/CSS. Main framework was built through Javascript on both client- and server-side. Initial steps were desiging page layouts and UI/UX design. Next steps were on the back-end, integrating a MongoDB database with Node.js/Express to build and design a REST API for managing 6 different request pipelines to manage account statistics, alerts, and transaction history. Following this, I built the front-end with basic Javascript frameworks to handle events, user input, and updating using fetch and async. This also involved data processing for future graphing. Data visualization was designed using Chart.js external library. Site was tested on several users for UI/UX feedback. Website is hosted using AWS, Heroku, Git, MongoDB Atlas.
 
-Pages Design:
+### Pages Design:
 
   HomePage
   ![Screenshot](Homepage.jpg)
   
   Data Visualization Tool
   ![Screenshot](Graph.jpg)
-Features:
+  
+### Features:
 - 2 pages to manage budgeting account
   - Manage: handle user interaction
   - Account: data visualization of transaction statistics
@@ -23,7 +24,7 @@ Features:
 - Customizable alerts for helpful feedback on spending
 - Data visualization tool of transacion history
 
-Tools Used:
+### Tools Used:
 - Chart.js - handle data charting and visualizing
 - Node.js/Express/MongoDB - storing/managing persistent user transaction data
 - REST - design and implement an API
