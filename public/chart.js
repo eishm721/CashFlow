@@ -13,6 +13,7 @@ const MIN_IN_HR = 60;
 const HR_IN_DAY = 24;
 const QUADYEAR = 4;
 const CENTURY = 100;
+const ALL_VIEW_HR_LIMIT = 48;
 
 class Grapher {
   // initializes elements on page
@@ -36,6 +37,9 @@ class Grapher {
     // default display types
     this._displayType = "overall";
     this._dateType = "date";
+
+    // for axis labeling
+    this._allTimeInterval = "hours";
   }
 
   // fills in initializations from constructor with selectors, binds event handlers
@@ -174,7 +178,11 @@ class Grapher {
       case "date":
         return "Hours";
       default: // "all"
-        return "Hours Since First Transaction";
+        let interval = "Hours";
+        if (this._allTimeInterval === "days") {
+          interval = "Days";
+        }
+        return `${interval} Since First Transaction`;
     }
   }
 
@@ -222,7 +230,6 @@ class Grapher {
     let xAxis = JSON.parse(JSON.stringify(yAxis));   // deep copy
     xAxis[0].scaleLabel.labelString = this._getXAxisLabel();
 
-    console.log(yAxis);
     // create chart using Chart.js data visualization tool
     let myChart = new Chart(this._createCanvas(), {
       type: 'bar',
@@ -266,7 +273,13 @@ class Grapher {
       case "month":
         return this._numDaysInMonth(currMonth, currYear);
       default:
-        return Math.ceil(this._numHoursToNow(oldest, now));
+        let hrs = this._numHoursToNow(oldest, now);
+        if (hrs < ALL_VIEW_HR_LIMIT) {
+          return Math.ceil(hrs);
+        } else {
+          this._allTimeInterval = "days";
+          return Math.ceil(hrs / HR_IN_DAY);
+        }
     }
   }
 
@@ -302,8 +315,11 @@ class Grapher {
           if (!((this._displayType === "deposit" && value < 0) || (this._displayType === "withdrawl" && value > 0))) {
 
             // compute what index in initialized arrays to update to show correct value
-            let toUpdate = arrLength - Math.floor(this._numHoursToNow(time, now)) - 1;  // if this._dateType == "all"
-            if (this._dateType === "date") {
+            let hrsToNow = this._numHoursToNow(time, now);
+            let toUpdate = arrLength - Math.floor(hrsToNow) - 1;  // if this._dateType == "all"
+            if (this._dateType === "all" && this._allTimeInterval === "days") {
+              toUpdate = arrLength - Math.floor(hrsToNow / HR_IN_DAY) - 1;
+            } else if (this._dateType === "date") {
               toUpdate = hour;
             } else if (this._dateType === "month") {
               toUpdate = date - 1;
